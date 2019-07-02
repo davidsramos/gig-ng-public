@@ -1,0 +1,48 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+      <div class="row">        
+          <div class="col-md-3">              
+            <mat-form-field class="example-full-width">
+              <input matInput                   
+                  [(ngModel)]="repeatChar"
+                  placeholder="CHARACTER" 
+                  type="text" 
+                  maxlength="1"
+                  appAlphaOnly>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6" align="center">              
+            <app-clock></app-clock>
+          </div>
+          <div class="col-md-3">              
+              <button mat-raised-button 
+                type="button" 
+                class="btn btn-primary"
+                (click)="generateGrid()">
+                GENERATE 2D GRID
+              </button>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Generator Page</h4>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="grid" width="100%">
+                            <tr *ngFor="let line of charGrid">
+                                <td *ngFor="let column of line">
+                                    {{ column }}
+                                </td>
+                            </tr>
+                        </table>                          
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-3 offset-md-4">
+              <div class="alert alert-info text-center">
+                  <span>
+                      <b> YOUR CODE NOW: </b> {{genCode}}</span>
+              </div>
+            </div>
+        </div>
+
+        <div class="row">        
+            <div class="col-md-4">              
+              <mat-form-field class="example-full-width">
+                <input matInput                   
+                    [(ngModel)]="payment"
+                    placeholder="PAYMENT" 
+                    type="text">
+              </mat-form-field>
+            </div>
+            <div class="col-md-2" align="center">            
+                <mat-form-field class="example-full-width">
+                  <input matInput           
+                      currencyMask   
+                      [options]="{ prefix: '€ ', thousands: '.', decimal: ',' }"      
+                      [(ngModel)]="amount"
+                      placeholder="AMOUNT" 
+                      type="text">
+                </mat-form-field> 
+            </div>
+            <div class="col-md-2" align="center">           
+                <button mat-raised-button 
+                  type="button" 
+                  class="btn btn-primary"
+                  (click)="addPayments()"
+                  [disabled]="!genCode || !payment || !amount">
+                  +ADD
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">PAYMENTS</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th width="70%">
+                                        PAYMENT LIST
+                                    </th>
+                                    <th>
+                                        AMOUNT
+                                    </th>
+                                    <th>
+                                        CODE
+                                    </th>
+                                    <th>
+                                        GRID
+                                    </th>
+
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of arrPaymentsModel">
+                                        <td>
+                                            {{item.payment}}
+                                        </td>
+                                        <td>
+                                            {{item.amount | currency:'€ ':'symbol':'4.2-2'}}
+                                        </td>
+                                        <td>
+                                            {{item.code}}
+                                        </td>
+                                        <td>
+                                            64
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
